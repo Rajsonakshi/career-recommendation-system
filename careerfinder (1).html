@@ -1,0 +1,1914 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>CareerAI – Discover the career that fits YOU</title>
+    <style>
+/* ===== THEME COLOURS: change these to restyle the whole site ===== */
+:root {
+  --bg: #090d1f;
+  --tx: #eef1fb;
+  --mu: #98a2c3;
+  --cd: rgba(255, 255, 255, 0.06);
+  --bd: rgba(255, 255, 255, 0.13);
+  --a: #5b8cff;
+  --b: #a06bff;
+  --g: linear-gradient(135deg, #4f8cff, #9b6bff);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: border-box;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f2f4fc;
+    --tx: #12162b;
+    --mu: #586080;
+    --cd: rgba(255, 255, 255, 0.75);
+    --bd: rgba(30, 40, 100, 0.14);
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f2f4fc;
+  --tx: #12162b;
+  --mu: #586080;
+  --cd: rgba(255, 255, 255, 0.75);
+  --bd: rgba(30, 40, 100, 0.14);
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+/* ===== PAGE BASICS ===== */
+body {
+  margin: 0;
+  font:
+    16px/1.55 "Trebuchet MS",
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+  color: var(--tx);
+  background:
+    radial-gradient(
+      900px 500px at 10% -10%,
+      rgba(91, 140, 255, 0.28),
+      transparent
+    ),
+    radial-gradient(
+      800px 500px at 100% 5%,
+      rgba(160, 107, 255, 0.22),
+      transparent
+    ),
+    var(--bg) fixed;
+  min-height: 100vh;
+}
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.15;
+  margin: 0.2em 0 0.4em;
+}
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+h2 {
+  font-size: 1.7rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+.w {
+  max-width: 1080px;
+  margin: auto;
+  padding: 24px 18px;
+}
+.mu {
+  color: var(--mu);
+}
+/* ===== NAVIGATION BAR ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border-bottom: 1px solid var(--bd);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+nav .w {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 18px;
+  overflow-x: auto;
+}
+nav a,
+nav button.l {
+  color: var(--mu);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 0.92rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+nav a:hover {
+  color: var(--tx);
+}
+.logo {
+  font:
+    700 1.25rem Georgia,
+    serif;
+  color: var(--tx) !important;
+  margin-right: auto;
+}
+.sp {
+  flex: 1;
+}
+/* ===== CARDS AND BUTTONS ===== */
+.cd {
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  transition: 0.25s;
+}
+.cd.h:hover {
+  border-color: var(--a);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px -18px var(--a);
+}
+.btn {
+  font: inherit;
+  border: 1px solid var(--bd);
+  background: var(--cd);
+  color: var(--tx);
+  padding: 11px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn:hover {
+  border-color: var(--a);
+}
+.btn.p {
+  background: var(--g);
+  border: 0;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 8px 30px -10px var(--b);
+}
+.btn.p:hover {
+  filter: brightness(1.1);
+}
+:focus-visible {
+  outline: 3px solid var(--a);
+  outline-offset: 2px;
+}
+.gr {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.view {
+  animation: fi 0.5s;
+}
+@keyframes fi {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.hero {
+  padding: 56px 0 30px;
+  max-width: 760px;
+}
+.hero p {
+  font-size: 1.15rem;
+  color: var(--mu);
+}
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 34px 0;
+  flex-wrap: wrap;
+}
+.nd {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+.nd b {
+  display: block;
+  font-size: 2rem;
+}
+.ar {
+  height: 3px;
+  width: 50px;
+  background: linear-gradient(90deg, transparent, var(--a), transparent);
+  background-size: 200%;
+  animation: sl 1.6s linear infinite;
+}
+@keyframes sl {
+  to {
+    background-position: -200%;
+  }
+}
+/* ===== CHIPS, INPUTS AND SLIDERS ===== */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.chip {
+  font: inherit;
+  color: var(--tx);
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 999px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.chip.on {
+  background: var(--g);
+  border-color: transparent;
+  color: #fff;
+}
+.chip:hover {
+  border-color: var(--a);
+}
+label {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--mu);
+  margin: 14px 0 5px;
+}
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  font: inherit;
+  color: var(--tx);
+  background: var(--cd);
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 10px;
+}
+select option {
+  color: #000;
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--a);
+}
+.sl {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+.sl output {
+  font-family: monospace;
+  color: var(--a);
+  white-space: nowrap;
+}
+/* ===== PROGRESS BAR ===== */
+.pg {
+  display: flex;
+  align-items: center;
+  margin: 0 0 18px;
+  gap: 0;
+}
+.pg i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--bd);
+  flex: none;
+  transition: 0.3s;
+}
+.pg i.d {
+  background: var(--a);
+  border-color: var(--a);
+}
+.pg i.c {
+  box-shadow: 0 0 0 5px rgba(91, 140, 255, 0.3);
+  background: var(--a);
+  border-color: var(--a);
+}
+.pg u {
+  flex: 1;
+  height: 2px;
+  background: var(--bd);
+}
+.pg u.d {
+  background: var(--a);
+}
+.ft {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+/* ===== ANALYSIS SCREEN ===== */
+.an {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 10px;
+}
+.an li {
+  list-style: none;
+  opacity: 0.25;
+  transition: 0.5s;
+  text-align: left;
+}
+.an li.on {
+  opacity: 1;
+}
+.an ul {
+  padding: 0;
+  margin: 14px auto;
+}
+.sp2 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px solid var(--bd);
+  border-top-color: var(--a);
+  margin: auto;
+  animation: rt 1s linear infinite;
+}
+@keyframes rt {
+  to {
+    transform: rotate(1turn);
+  }
+}
+/* ===== RESULTS: SCORE RING AND BAR CHARTS ===== */
+.ring {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  flex: none;
+}
+.ring svg {
+  transform: rotate(-90deg);
+}
+.ring circle {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+.ring .t {
+  stroke: var(--bd);
+}
+.ring .v {
+  stroke: url(#gg);
+  stroke-dasharray: 440;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ring b {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  font:
+    700 2.4rem Georgia,
+    serif;
+}
+.top {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.br {
+  display: grid;
+  grid-template-columns: 130px 1fr 90px;
+  gap: 10px;
+  align-items: center;
+  margin: 9px 0;
+  font-size: 0.9rem;
+}
+.br i {
+  height: 12px;
+  background: var(--bd);
+  border-radius: 9px;
+  overflow: hidden;
+}
+.br b {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  background: var(--g);
+  border-radius: 9px;
+  animation: gw 1.1s both;
+}
+@keyframes gw {
+  from {
+    width: 0;
+  }
+}
+.br em {
+  font-style: normal;
+  color: var(--mu);
+  text-align: right;
+  font-size: 0.8rem;
+}
+.pill {
+  font-size: 0.78rem;
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 2px 8px;
+  color: var(--mu);
+}
+.m {
+  font:
+    700 1.5rem Georgia,
+    serif;
+  background: var(--g);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* ===== TABLE, ROADMAP, TOOLTIP, TOAST, DIALOG ===== */
+.tb {
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+}
+td,
+th {
+  padding: 10px;
+  border-bottom: 1px solid var(--bd);
+  text-align: left;
+}
+th {
+  color: var(--mu);
+  font-weight: 400;
+}
+.ph {
+  border-left: 3px solid var(--a);
+  padding: 2px 0 2px 16px;
+  margin: 12px 0;
+}
+.path {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+.path span {
+  padding: 6px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--bd);
+  background: var(--cd);
+}
+#tip {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  background: #111a3a;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 8px 11px;
+  border-radius: 9px;
+  max-width: 260px;
+  display: none;
+  border: 1px solid var(--a);
+}
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 90px);
+  background: var(--g);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 12px;
+  transition: 0.4s;
+  z-index: 60;
+}
+#toast.s {
+  transform: translate(-50%, 0);
+}
+dialog {
+  max-width: 560px;
+  width: 92%;
+  background: var(--bg);
+  color: var(--tx);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+textarea {
+  width: 100%;
+  height: 140px;
+  background: var(--cd);
+  color: var(--tx);
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+}
+.note {
+  font-size: 0.85rem;
+  border: 1px dashed var(--b);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: var(--mu);
+}
+.sk {
+  height: 60px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--cd), var(--bd), var(--cd));
+  background-size: 200%;
+  animation: sl 1.2s linear infinite;
+  margin: 10px 0;
+}
+/* ===== NEW INPUT STYLES: errors, rating buttons, ranking list ===== */
+.err {
+  color: #ff7a8a;
+  font-size: 0.84rem;
+  margin: 5px 0 0;
+}
+.err[hidden],
+.chip[hidden] {
+  display: none;
+}
+input.bad {
+  border-color: #ff7a8a;
+}
+.seg {
+  display: flex;
+  gap: 4px;
+  margin: 2px 0 12px;
+}
+.seg button {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 0;
+  border-radius: 8px;
+  border: 1px solid var(--bd);
+  background: var(--cd);
+  color: var(--tx);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+}
+.seg button.on {
+  background: var(--g);
+  border-color: transparent;
+  color: #fff;
+}
+.rk {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+.rk li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  background: var(--cd);
+}
+.rk li:nth-child(-n + 3) {
+  border-color: var(--a);
+}
+.rk b {
+  width: 26px;
+  color: var(--a);
+}
+.rk span {
+  flex: 1;
+}
+.rk button {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  border: 1px solid var(--bd);
+  background: none;
+  color: var(--tx);
+  cursor: pointer;
+}
+.rk button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+.nb {
+  width: 84px !important;
+  margin-left: 10px;
+}
+.rr {
+  display: flex;
+  align-items: center;
+}
+.sv2 {
+  font-size: 0.8rem;
+  color: var(--mu);
+  min-height: 1.2em;
+  margin: 10px 0 0;
+}
+/* ===== PHONE LAYOUT & REDUCED MOTION ===== */
+@media (max-width: 600px) {
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .br {
+    grid-template-columns: 90px 1fr 70px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <!-- CareerAI: the style block is the design, the HTML below is the screens, the script block at the end is the logic -->
+    <nav>
+      <div class="w">
+        <a
+          class="logo"
+          href="#"
+          onclick="
+            show('home');
+            return false;
+          "
+          >◆ CareerAI</a
+        ><span id="rn" hidden
+          ><a href="#top">Matches</a><a href="#charts">Charts</a
+          ><a href="#paying">Highest paying</a><a href="#demand">In demand</a
+          ><a href="#why">Why</a><a href="#cmp">Compare</a></span
+        ><button class="l" id="th" aria-label="Toggle dark or light mode">
+          ◐ Theme
+        </button>
+      </div>
+    </nav>
+    <main>
+      <section class="view w" id="home">
+        <div class="hero">
+          <h1>Your Future Starts With One Decision.</h1>
+          <p>
+            Answer a few questions and let CareerAI analyze your interests,
+            strengths, personality, academic profile, and goals to discover
+            careers that could fit you.
+          </p>
+          <p class="mu"><b>Discover the career that fits YOU.</b></p>
+          <div class="row">
+            <button class="btn p" onclick="start()">
+              Start Career Assessment →</button
+            ><button
+              class="btn"
+              onclick="document.getElementById('how').scrollIntoView()"
+            >
+              How It Works</button
+            ><button class="btn" id="rs" hidden onclick="resume()">
+              Resume saved progress
+            </button>
+          </div>
+        </div>
+        <div
+          class="cd flow"
+          aria-label="Student to AI analysis to career recommendations"
+        >
+          <div class="nd"><b>🎓</b>Student</div>
+          <div class="ar"></div>
+          <div class="nd"><b>🧠</b>AI analysis</div>
+          <div class="ar"></div>
+          <div class="nd"><b>🧭</b>Career recommendations</div>
+        </div>
+        <div class="gr">
+          <div class="cd h">
+            <h3>🎯 AI Career Matching</h3>
+            <p class="mu">Discover careers that match your unique profile.</p>
+          </div>
+          <div class="cd h">
+            <h3>📈 Career Intelligence</h3>
+            <p class="mu">
+              Compare salary potential, demand, skills, and growth.
+            </p>
+          </div>
+          <div class="cd h">
+            <h3>🚀 Personalized Roadmap</h3>
+            <p class="mu">
+              Understand what you should learn to reach your chosen career.
+            </p>
+          </div>
+        </div>
+        <h2 id="how" style="margin-top: 44px">How it works</h2>
+        <div class="gr">
+          <div class="cd">
+            <h3>1. Answer 10 short steps</h3>
+            <p class="mu">Academics, interests, skills, work style, goals.</p>
+          </div>
+          <div class="cd">
+            <h3>2. A transparent score</h3>
+            <p class="mu">
+              Six weighted factors you can see and change. No black box.
+            </p>
+          </div>
+          <div class="cd">
+            <h3>3. Explore and compare</h3>
+            <p class="mu">Details, roadmaps and side-by-side comparison.</p>
+          </div>
+        </div>
+        <p class="note" style="margin-top: 24px">
+          Your answers are used only to generate your career recommendations.
+          They stay in your browser.
+        </p>
+      </section>
+      <section class="view w" id="test" hidden></section>
+      <section class="view w" id="an" hidden>
+        <div class="an">
+          <div class="sp2"></div>
+          <h2>Analyzing your career profile…</h2>
+          <ul id="al"></ul>
+          <h3 id="ad" style="opacity: 0">
+            Your personalized career map is ready.
+          </h3>
+        </div>
+      </section>
+      <section class="view w" id="res" hidden></section>
+      <section class="view w" id="det" hidden></section>
+    </main>
+    <footer class="w mu" style="font-size: 0.85rem">
+      <p class="note">
+        <b>Disclaimer:</b> CareerAI provides guidance based on the information
+        you provide and available career-market data. It does not guarantee
+        career success, salary, employment, or future demand. Career decisions
+        should also consider education requirements, personal circumstances, and
+        guidance from qualified professionals.
+      </p>
+      <div class="row">
+        <button class="btn" onclick="dlg('priv')">Privacy policy</button
+        ><button class="btn" onclick="dlg('exp')">Export my data</button
+        ><button class="btn" onclick="delA()">Delete assessment</button
+        ><button class="btn" onclick="clr()">Clear saved data</button>
+      </div>
+    </footer>
+    <div id="tip"></div>
+    <div id="toast" role="status"></div>
+    <dialog id="dg"></dialog>
+    <script>
+// ========== 1. HELPERS ==========
+// $ finds one element, $$ finds all elements (short names for document.querySelector)
+const $ = (s, e = document) => e.querySelector(s),
+  $$ = (s, e = document) => [...e.querySelectorAll(s)];
+// ========== 2. DATA ==========
+// The 14 skills the user rates from 1 to 10
+const SK = [
+  "Problem solving",
+  "Logical thinking",
+  "Mathematics",
+  "Programming",
+  "Communication",
+  "Leadership",
+  "Creativity",
+  "Teamwork",
+  "Analytical thinking",
+  "Public speaking",
+  "Research",
+  "Writing",
+  "Time management",
+  "Decision making",
+];
+// Options for every question (chips). Change the text here to change the choices
+const O = {
+  edu: [
+    "Class 10",
+    "Class 11",
+    "Class 12",
+    "Diploma",
+    "Undergraduate",
+    "Postgraduate",
+    "Other",
+  ],
+  subj: [
+    "Mathematics",
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Computer Science",
+    "Economics",
+    "Business",
+    "English",
+    "Psychology",
+    "Design",
+    "Social Science",
+    "Other",
+  ],
+  it: [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Software Development",
+    "Data Science",
+    "Cybersecurity",
+    "Robotics",
+    "Electronics",
+    "Medicine",
+    "Finance",
+    "Business",
+    "Entrepreneurship",
+    "Marketing",
+    "Law",
+    "Psychology",
+    "Design",
+    "Research",
+    "Government/Public Service",
+    "Teaching",
+    "Media",
+    "Environment",
+    "Other",
+  ],
+  env: [
+    "Working independently",
+    "Working in a team",
+    "Leading a team",
+    "Customer-facing",
+    "Research-oriented",
+  ],
+  ey: [
+    "Solving problems",
+    "Creating things",
+    "Helping people",
+    "Managing people",
+    "Working with technology",
+    "Analyzing information",
+    "Selling/persuading",
+    "Researching",
+  ],
+  wp: ["Remote", "Hybrid", "Office", "Field", "Flexible"],
+  pri: [
+    "High salary",
+    "Job security",
+    "Work-life balance",
+    "Career growth",
+    "Social impact",
+    "Prestige",
+    "Creativity",
+    "Entrepreneurship",
+    "International opportunities",
+    "Remote work",
+  ],
+  reg: ["India", "USA", "Europe", "Canada", "Australia", "Anywhere"],
+  dur: ["1–2 years", "3–4 years", "5+ years", "I'm flexible"],
+  typ: [
+    "High income but high competition",
+    "Balanced income and stability",
+    "High job security",
+    "High growth potential",
+    "Entrepreneurship potential",
+  ],
+};
+// CAREER DATABASE. To add a career, copy one block and edit it.
+// ac = how much Maths/Science/Computer/English matter (0 to 1)
+// sub / it = subjects and interests that fit   sk = skill importance (%)
+// en / ey = work environment and activities that fit   gl = goals that fit
+// sal = salary range (illustrative estimate)   dem / gr = demand and growth (0-100)
+// rp = roadmap phases separated by |
+const C = [
+  {
+    n: "AI/ML Engineer",
+    i: "🤖",
+    d: "Builds and deploys machine-learning systems that learn from data.",
+    ac: [1, 0.5, 1, 0.3],
+    sub: ["Mathematics", "Computer Science", "Physics"],
+    it: [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Data Science",
+      "Robotics",
+      "Research",
+    ],
+    sk: {
+      Programming: 90,
+      Mathematics: 85,
+      "Logical thinking": 85,
+      "Problem solving": 80,
+      "Analytical thinking": 80,
+      Research: 60,
+    },
+    en: ["Working independently", "Research-oriented"],
+    ey: [
+      "Working with technology",
+      "Solving problems",
+      "Analyzing information",
+    ],
+    rk: 6,
+    gl: [
+      "High salary",
+      "Career growth",
+      "International opportunities",
+      "Remote work",
+    ],
+    sal: [8, 45],
+    dem: 95,
+    gr: 95,
+    df: 9,
+    wb: 6,
+    rm: 8,
+    yr: 4,
+    ed: "Bachelor's in CS/IT/Maths; Master's helpful",
+    rp: "Python & programming fundamentals|Data structures & algorithms|Linear algebra, calculus, statistics|Machine learning & deep learning|Real-world projects & Kaggle-style practice|Internships, job & interview prep",
+    pj: "Image classifier, recommender, RAG chatbot",
+  },
+  {
+    n: "Data Scientist",
+    i: "📊",
+    d: "Turns messy data into decisions using statistics and modelling.",
+    ac: [1, 0.6, 0.8, 0.5],
+    sub: ["Mathematics", "Computer Science", "Economics"],
+    it: ["Data Science", "Machine Learning", "Finance", "Research", "Business"],
+    sk: {
+      "Analytical thinking": 90,
+      Mathematics: 80,
+      Programming: 75,
+      "Problem solving": 75,
+      Communication: 60,
+      Research: 60,
+    },
+    en: ["Working in a team", "Research-oriented"],
+    ey: ["Analyzing information", "Solving problems"],
+    rk: 5,
+    gl: ["High salary", "Career growth", "Remote work"],
+    sal: [7, 38],
+    dem: 90,
+    gr: 90,
+    df: 8,
+    wb: 7,
+    rm: 8,
+    yr: 4,
+    ed: "Bachelor's in CS/Stats/Maths",
+    rp: "Python, SQL & Excel|Statistics & probability|Data cleaning & visualization|Machine learning basics|Case-study portfolio|Internships, job & interview prep",
+    pj: "Sales forecasting, churn model, dashboard story",
+  },
+  {
+    n: "Software Engineer",
+    i: "💻",
+    d: "Designs, builds and maintains software products.",
+    ac: [0.7, 0.3, 1, 0.4],
+    sub: ["Computer Science", "Mathematics"],
+    it: [
+      "Software Development",
+      "Artificial Intelligence",
+      "Entrepreneurship",
+      "Electronics",
+    ],
+    sk: {
+      Programming: 95,
+      "Problem solving": 90,
+      "Logical thinking": 85,
+      Teamwork: 60,
+      "Time management": 50,
+    },
+    en: ["Working in a team", "Working independently"],
+    ey: ["Creating things", "Working with technology", "Solving problems"],
+    rk: 5,
+    gl: [
+      "High salary",
+      "Remote work",
+      "International opportunities",
+      "Career growth",
+    ],
+    sal: [5, 40],
+    dem: 92,
+    gr: 85,
+    df: 7,
+    wb: 6,
+    rm: 9,
+    yr: 4,
+    ed: "Bachelor's in CS/IT/BCA",
+    rp: "Programming fundamentals|Data structures & algorithms|Web/app development & Git|System design basics|Projects & open source|Internships, job & interview prep",
+    pj: "Full-stack app, API service, open-source contribution",
+  },
+  {
+    n: "Cybersecurity Analyst",
+    i: "🛡️",
+    d: "Protects systems and data by finding and fixing weaknesses.",
+    ac: [0.6, 0.4, 1, 0.4],
+    sub: ["Computer Science", "Mathematics"],
+    it: [
+      "Cybersecurity",
+      "Software Development",
+      "Law",
+      "Government/Public Service",
+    ],
+    sk: {
+      "Analytical thinking": 85,
+      "Problem solving": 85,
+      Programming: 65,
+      "Logical thinking": 75,
+      "Decision making": 65,
+      "Time management": 50,
+    },
+    en: ["Working in a team", "Working independently"],
+    ey: [
+      "Solving problems",
+      "Working with technology",
+      "Analyzing information",
+    ],
+    rk: 4,
+    gl: [
+      "Job security",
+      "Career growth",
+      "High salary",
+      "International opportunities",
+    ],
+    sal: [5, 35],
+    dem: 89,
+    gr: 88,
+    df: 7,
+    wb: 5,
+    rm: 7,
+    yr: 4,
+    ed: "Bachelor's in CS/IT; security certifications",
+    rp: "Networking & Linux|Programming & scripting|Security fundamentals|Ethical hacking labs|CTF competitions & home lab|Internships, job & interview prep",
+    pj: "Home security lab, vulnerability report, CTF write-ups",
+  },
+  {
+    n: "Product Manager",
+    i: "🧭",
+    d: "Decides what to build and why, aligning users, design and engineering.",
+    ac: [0.4, 0.2, 0.6, 0.8],
+    sub: ["Business", "Computer Science", "Economics", "Psychology"],
+    it: [
+      "Business",
+      "Entrepreneurship",
+      "Software Development",
+      "Design",
+      "Marketing",
+    ],
+    sk: {
+      Communication: 90,
+      Leadership: 85,
+      "Decision making": 85,
+      "Analytical thinking": 70,
+      Teamwork: 75,
+      "Public speaking": 60,
+    },
+    en: ["Leading a team", "Working in a team", "Customer-facing"],
+    ey: ["Managing people", "Creating things", "Analyzing information"],
+    rk: 7,
+    gl: ["Career growth", "High salary", "Prestige", "Entrepreneurship"],
+    sal: [10, 50],
+    dem: 80,
+    gr: 78,
+    df: 7,
+    wb: 5,
+    rm: 6,
+    yr: 5,
+    ed: "Bachelor's (any) + domain experience; MBA optional",
+    rp: "Product & business fundamentals|User research & analytics|Roadmapping & prioritisation|Basic technical literacy|Product case studies & side project|Associate PM roles, interview prep",
+    pj: "Product teardown, launched side project, PRD",
+  },
+  {
+    n: "Cloud/DevOps Engineer",
+    i: "☁️",
+    d: "Runs reliable, scalable infrastructure and delivery pipelines.",
+    ac: [0.5, 0.3, 1, 0.3],
+    sub: ["Computer Science"],
+    it: ["Software Development", "Cybersecurity", "Electronics"],
+    sk: {
+      Programming: 75,
+      "Problem solving": 85,
+      "Logical thinking": 75,
+      "Time management": 60,
+      Teamwork: 60,
+    },
+    en: ["Working in a team", "Working independently"],
+    ey: ["Working with technology", "Solving problems"],
+    rk: 4,
+    gl: ["Job security", "Remote work", "High salary", "Work-life balance"],
+    sal: [5, 38],
+    dem: 88,
+    gr: 87,
+    df: 6,
+    wb: 6,
+    rm: 9,
+    yr: 4,
+    ed: "Bachelor's in CS/IT; cloud certification",
+    rp: "Linux, networking & scripting|Programming basics|Cloud platform fundamentals|Containers, CI/CD & IaC|Deploy real projects|Internships, job & interview prep",
+    pj: "CI/CD pipeline, containerised app on cloud, monitoring dashboard",
+  },
+  {
+    n: "UX/UI Designer",
+    i: "🎨",
+    d: "Shapes how products look and feel through research and design.",
+    ac: [0.2, 0.2, 0.5, 0.7],
+    sub: ["Design", "Psychology", "English"],
+    it: ["Design", "Media", "Marketing", "Psychology", "Software Development"],
+    sk: {
+      Creativity: 95,
+      Communication: 75,
+      "Problem solving": 65,
+      Teamwork: 65,
+      Research: 55,
+    },
+    en: ["Working in a team", "Customer-facing"],
+    ey: ["Creating things", "Helping people"],
+    rk: 5,
+    gl: ["Creativity", "Work-life balance", "Remote work", "Entrepreneurship"],
+    sal: [4, 30],
+    dem: 72,
+    gr: 74,
+    df: 5,
+    wb: 7,
+    rm: 9,
+    yr: 3,
+    ed: "Bachelor's/diploma in design, HCI or any field + portfolio",
+    rp: "Design principles & typography|Design tools|User research & usability testing|Prototyping & design systems|Portfolio case studies|Internships, job & interview prep",
+    pj: "App redesign case study, design system, usability study",
+  },
+  {
+    n: "Financial Analyst",
+    i: "💹",
+    d: "Evaluates financial data to guide investment and business decisions.",
+    ac: [0.9, 0.2, 0.4, 0.6],
+    sub: ["Economics", "Mathematics", "Business"],
+    it: ["Finance", "Business", "Data Science", "Entrepreneurship"],
+    sk: {
+      "Analytical thinking": 90,
+      Mathematics: 80,
+      "Decision making": 75,
+      "Time management": 65,
+      Communication: 60,
+      Writing: 50,
+    },
+    en: ["Working in a team", "Working independently"],
+    ey: ["Analyzing information", "Solving problems"],
+    rk: 4,
+    gl: ["High salary", "Prestige", "Job security", "Career growth"],
+    sal: [4, 35],
+    dem: 74,
+    gr: 70,
+    df: 6,
+    wb: 5,
+    rm: 5,
+    yr: 4,
+    ed: "Bachelor's in Commerce/Finance/Economics; CFA or MBA optional",
+    rp: "Accounting & finance fundamentals|Excel & financial modelling|Statistics & economics|Markets & valuation|Equity research reports|Internships, job & interview prep",
+    pj: "Company valuation model, equity research note, budget dashboard",
+  },
+];
+// ========== 3. SCORING WEIGHTS ==========
+// Final score = weighted average of these six factors (weights are percentages)
+const DW = { acad: 25, int: 25, skill: 20, pers: 10, goal: 10, mkt: 10 },
+  WL = {
+    acad: "Academic fit",
+    int: "Interest fit",
+    skill: "Skill fit",
+    pers: "Personality fit",
+    goal: "Goal fit",
+    mkt: "Market demand",
+  };
+// ========== 4. APP STATE ==========
+// DD() returns a fresh set of default answers
+const DD = () => ({
+  name: "",
+  age: "",
+  country: "India",
+  city: "",
+  edu: "Undergraduate",
+  course: "",
+  year: "",
+  pct: "",
+  m: 60,
+  s: 60,
+  c: 60,
+  e: 60,
+  o: 60,
+  subj: [],
+  it: [],
+  sk: Object.fromEntries(SK.map((k) => [k, 5])),
+  env: [],
+  ey: [],
+  rk: 5,
+  wp: "Flexible",
+  pri: [...O.pri],
+  sal: 6,
+  reg: "India",
+  dur: "I'm flexible",
+  typ: "High growth potential",
+});
+// D = user's answers, W = current weights, st = current step, cmp = careers being compared, R = ranked results
+let D = DD(),
+  W = { ...DW },
+  st = 0,
+  cmp = [],
+  R = [];
+// Save answers in the browser (localStorage) so progress is not lost
+const sv = () => {
+  try {
+    localStorage.setItem("careerai", JSON.stringify({ D, st }));
+  } catch (e) {}
+};
+try {
+  const s = JSON.parse(localStorage.getItem("careerai"));
+  if (s && s.D) {
+    D = Object.assign(DD(), s.D);
+    st = s.st || 0;
+    $("#rs").hidden = false;
+  }
+} catch (e) {}
+// Small popup message at the bottom of the screen
+function toast(t) {
+  const e = $("#toast");
+  e.textContent = t;
+  e.classList.add("s");
+  clearTimeout(e.t);
+  e.t = setTimeout(() => e.classList.remove("s"), 2200);
+}
+// Show one screen (home, test, an, res, det) and hide the others
+function show(id) {
+  $$(".view").forEach((v) => (v.hidden = v.id != id));
+  $("#rn").hidden = id != "res";
+  scrollTo(0, 0);
+}
+$("#th").onclick = () => {
+  const r = document.documentElement,
+    l = getComputedStyle(r).getPropertyValue("--bg").trim() == "#090d1f";
+  r.dataset.theme = l ? "light" : "dark";
+};
+document.addEventListener("mousemove", (e) => {
+  const t = e.target.closest("[data-tip]"),
+    p = $("#tip");
+  if (t) {
+    p.textContent = t.dataset.tip;
+    p.style.display = "block";
+    p.style.left = Math.min(e.clientX + 14, innerWidth - 270) + "px";
+    p.style.top = e.clientY + 16 + "px";
+  } else p.style.display = "none";
+});
+// ========== 5. QUESTION BUILDERS ==========
+// es = make text safe to put inside HTML
+const es = (s) =>
+  String(s).replace(
+    /[&<>"]/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
+  );
+// ch = group of clickable chips (single or multiple choice)
+const ch = (k, o, one) =>
+  `<div class="cg" data-g="${k}"><div class="chips" role="group" aria-label="${k}">${o
+    .map((v) => {
+      const a = one ? D[k] == v : D[k].includes(v);
+      return `<button type="button" class="chip${a ? " on" : ""}" aria-pressed="${a}" data-k="${k}" data-v="${es(v)}" data-o="${one ? 1 : 0}">${v}</button>`;
+    })
+    .join("")}</div><p class="err" id="e_${k}" role="alert" hidden></p></div>`;
+// tx = text or number input with an error message below it
+const tx = (k, l, t, x) =>
+  `<label for="f${k}">${l}</label><input id="f${k}" type="${t || "text"}" data-f="${k}" value="${es(D[k])}" ${x || ""}><p class="err" id="e_${k}" role="alert" hidden></p>`;
+const ro = (v, mx) =>
+  mx > 10 ? v + "%" : v + "/10 " + "█".repeat(v) + "░".repeat(10 - v);
+// rg = slider (with a number box for 0-100 sliders)
+const rg = (k, l, mx) => {
+  const v = D[k];
+  return `<label for="r${k}" class="sl"><span>${l}</span><output>${ro(v, mx)}</output></label><div class="rr"><input id="r${k}" type="range" min="${mx > 10 ? 0 : 1}" max="${mx}" value="${v}" data-r="${k}" data-mx="${mx}">${mx > 10 ? `<input class="nb" type="number" inputmode="numeric" min="0" max="100" value="${v}" data-n="${k}" aria-label="${l} value">` : ""}</div>`;
+};
+// sg = 1-10 rating buttons used for skills
+const sg = (k) =>
+  `<div class="sl"><span id="sl_${k}">${k}</span><output>${D.sk[k]}/10</output></div><div class="seg" role="radiogroup" aria-labelledby="sl_${k}">${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => `<button type="button" role="radio" aria-checked="${D.sk[k] == n}" class="${n <= D.sk[k] ? "on" : ""}" data-sk="${k}" data-v="${n}">${n}</button>`).join("")}</div>`;
+// rkl = ranking list with up/down arrows
+const rkl = () => {
+  D.pri = [
+    ...D.pri.filter((x) => O.pri.includes(x)),
+    ...O.pri.filter((x) => !D.pri.includes(x)),
+  ];
+  return `<ol class="rk" id="rk">${D.pri.map((p, i) => `<li><b>${i + 1}</b><span>${p}</span><button type="button" data-mv="${i}" data-d="-1" aria-label="Move ${p} up" ${i ? "" : "disabled"}>↑</button><button type="button" data-mv="${i}" data-d="1" aria-label="Move ${p} down" ${i < 9 ? "" : "disabled"}>↓</button></li>`).join("")}</ol>`;
+};
+// ========== 6. THE 10 STEPS ==========
+// Each step = [title, function that returns the HTML for that step]
+const STEPS = [
+  [
+    "Basic profile",
+    () =>
+      '<div class="two"><div>' +
+      tx(
+        "name",
+        "Name",
+        "text",
+        'autocomplete="given-name" maxlength="40" placeholder="e.g. Aarav"',
+      ) +
+      "</div><div>" +
+      tx(
+        "age",
+        "Age",
+        "number",
+        'inputmode="numeric" min="10" max="70" placeholder="e.g. 18"',
+      ) +
+      "</div><div>" +
+      tx(
+        "country",
+        "Country",
+        "text",
+        'list="cl" autocomplete="country-name"',
+      ) +
+      "</div><div>" +
+      tx("city", "City / State", "text", 'autocomplete="address-level1"') +
+      "</div><div>" +
+      tx(
+        "course",
+        "Current course / stream",
+        "text",
+        'placeholder="e.g. BCA, B.Tech, Science"',
+      ) +
+      "</div><div>" +
+      tx("year", "Year of study", "text", 'placeholder="e.g. 1st year"') +
+      '</div></div><datalist id="cl">' +
+      [
+        "India",
+        "USA",
+        "United Kingdom",
+        "Canada",
+        "Australia",
+        "Germany",
+        "UAE",
+        "Singapore",
+      ]
+        .map((c) => `<option value="${c}">`)
+        .join("") +
+      "</datalist><label>Current education level</label>" +
+      ch("edu", O.edu, 1),
+  ],
+  [
+    "Academic performance",
+    () =>
+      tx(
+        "pct",
+        "Overall percentage (for a 10-point CGPA, multiply by 9.5)",
+        "number",
+        'inputmode="decimal" min="0" max="100" step="0.1" placeholder="e.g. 78"',
+      ) +
+      '<p class="mu" style="margin-bottom:0">Drag a slider or type a value from 0 to 100.</p>' +
+      rg("m", "Mathematics", 100) +
+      rg("s", "Science", 100) +
+      rg("c", "Computer / IT", 100) +
+      rg("e", "English / communication", 100) +
+      rg("o", "Other subjects", 100),
+  ],
+  [
+    "Favourite subjects",
+    () =>
+      '<p class="mu">Which subjects do you enjoy the most? Pick all that apply.</p>' +
+      ch("subj", O.subj),
+  ],
+  [
+    "Areas of interest",
+    () =>
+      '<label for="isr">Search areas</label><input type="text" id="isr" placeholder="Type to filter, e.g. data, design, law" autocomplete="off"><p class="mu" id="ic" aria-live="polite"></p>' +
+      ch("it", O.it),
+  ],
+  [
+    "Skills self-rating",
+    () =>
+      '<p class="mu">Tap a number from 1 (beginner) to 10 (expert). Be honest; it makes the results better.</p>' +
+      SK.map(sg).join(""),
+  ],
+  [
+    "Work environment",
+    () =>
+      '<p class="mu">Which environment do you prefer?</p>' +
+      ch("env", O.env) +
+      '<p class="mu" style="margin-top:20px">What do you enjoy more?</p>' +
+      ch("ey", O.ey),
+  ],
+  [
+    "Risk and work style",
+    () =>
+      rg("rk", "Risk preference (low → high)", 10) +
+      "<label>Work preference</label>" +
+      ch("wp", O.wp, 1),
+  ],
+  [
+    "What matters most",
+    () =>
+      '<p class="mu">Rank what matters most to you in a career. Use the arrows to reorder. Your top 3 count most.</p>' +
+      rkl(),
+  ],
+  [
+    "Goals",
+    () =>
+      tx(
+        "sal",
+        "Expected starting salary (INR lakh per year)",
+        "number",
+        'inputmode="decimal" min="0" max="200" step="0.5"',
+      ) +
+      `<div class="chips" style="margin-top:8px">${[3, 6, 10, 15, 25].map((v) => `<button type="button" class="chip${D.sal == v ? " on" : ""}" data-q="${v}">₹${v} LPA</button>`).join("")}</div><label>Where would you like to work?</label>` +
+      ch("reg", O.reg, 1) +
+      "<label>How long are you willing to study or train?</label>" +
+      ch("dur", O.dur, 1),
+  ],
+  [
+    "Career preference",
+    () =>
+      '<p class="mu">Which would you prefer?</p>' +
+      ch("typ", O.typ, 1) +
+      `<div class="cd" style="margin-top:22px"><b>Ready?</b><p class="mu">${D.subj.length} subjects, ${D.it.length} interests, top priority: ${D.pri[0]}. These will be scored against ${C.length} careers using a transparent weighted model.</p></div>`,
+  ],
+];
+// ========== 7. VALIDATION ==========
+// One checker per step. It returns a list of [field, error message]
+const V = [
+  () => {
+    const e = [],
+      a = +D.age;
+    if (!String(D.name).trim()) e.push(["name", "Enter your name."]);
+    if (!(a >= 10 && a <= 70))
+      e.push(["age", "Enter an age between 10 and 70."]);
+    if (!String(D.country).trim()) e.push(["country", "Enter your country."]);
+    return e;
+  },
+  () =>
+    D.pct !== "" && D.pct >= 0 && D.pct <= 100
+      ? []
+      : [["pct", "Enter a percentage between 0 and 100."]],
+  () => (D.subj.length ? [] : [["subj", "Pick at least one subject."]]),
+  () =>
+    D.it.length
+      ? []
+      : [["it", "Pick at least one area. Three or more gives better matches."]],
+  () => [],
+  () => {
+    const e = [];
+    if (!D.env.length) e.push(["env", "Pick at least one environment."]);
+    if (!D.ey.length) e.push(["ey", "Pick at least one activity."]);
+    return e;
+  },
+  () => [],
+  () => [],
+  () =>
+    D.sal !== "" && D.sal >= 0 && D.sal <= 200
+      ? []
+      : [["sal", "Enter a salary between 0 and 200 LPA."]],
+  () => [],
+];
+// Show error messages and move focus to the first problem field
+function fail(e) {
+  $$("#test .err").forEach((x) => (x.hidden = true));
+  $$("#test .bad").forEach((x) => x.classList.remove("bad"));
+  e.forEach(([k, m]) => {
+    const p = $("#e_" + k);
+    p.textContent = m;
+    p.hidden = false;
+    const i = $("#f" + k);
+    i && i.classList.add("bad");
+  });
+  const t = $("#f" + e[0][0]) || $('.cg[data-g="' + e[0][0] + '"] .chip');
+  t &&
+    (t.scrollIntoView({ block: "center" }), t.focus({ preventScroll: true }));
+  toast(e[0][1]);
+}
+// Auto-save half a second after the user stops typing
+function as() {
+  clearTimeout(as.t);
+  as.t = setTimeout(() => {
+    sv();
+    const s = $("#sv2");
+    if (s) s.textContent = "✓ Saved automatically";
+  }, 500);
+}
+// Filter interest chips using the search box
+function flt() {
+  const s = $("#isr");
+  if (!s) return;
+  const q = s.value.trim().toLowerCase();
+  $$('.cg[data-g="it"] .chip').forEach(
+    (b) =>
+      (b.hidden =
+        !!q &&
+        !b.dataset.v.toLowerCase().includes(q) &&
+        !b.classList.contains("on")),
+  );
+  $("#ic").textContent =
+    D.it.length +
+    " selected" +
+    (D.it.length < 3 ? ". Pick 3 or more for better matches." : ".");
+}
+// ========== 8. DRAWING THE ASSESSMENT ==========
+// draw() builds the current step with progress bar and Back/Continue buttons
+function draw() {
+  const N = STEPS.length;
+  $("#test").innerHTML =
+    `<div class="cd"><p class="mu">Step ${st + 1} of ${N}</p><div class="pg" role="progressbar" aria-valuenow="${st + 1}" aria-valuemax="${N}">${STEPS.map((_, i) => (i ? `<u class="${i <= st ? "d" : ""}"></u>` : "") + `<i class="${i < st ? "d" : i == st ? "c" : ""}"></i>`).join("")}</div><h2>${STEPS[st][0]}</h2><div class="view">${STEPS[st][1]()}</div><p class="sv2" id="sv2" aria-live="polite"></p><div class="ft"><button class="btn" id="bk" ${st ? "" : "disabled"}>← Back</button><button class="btn" id="sv">Save progress</button><button class="btn p" id="nx">${st == N - 1 ? "Analyze my profile" : "Continue →"}</button></div></div>`;
+  $("#bk").onclick = () => {
+    st--;
+    sv();
+    draw();
+    scrollTo(0, 0);
+  };
+  $("#sv").onclick = () => {
+    sv();
+    toast("Progress saved in this browser");
+  };
+  $("#nx").onclick = () => {
+    const e = V[st]();
+    if (e.length) return fail(e);
+    if (st == N - 1) return analyze();
+    st++;
+    sv();
+    draw();
+    scrollTo(0, 0);
+  };
+  flt();
+  const f = $("#test input:not([type=range])");
+  if (f && matchMedia("(pointer:fine)").matches)
+    f.focus({ preventScroll: true });
+}
+// ========== 9. EVENTS ==========
+// One click listener handles chips, rating buttons, rank arrows and salary shortcuts
+document.addEventListener("click", (e) => {
+  const t = e.target;
+  let c;
+  if ((c = t.closest(".chip[data-k]"))) {
+    const k = c.dataset.k,
+      v = c.dataset.v,
+      one = c.dataset.o == "1";
+    if (one) D[k] = v;
+    else {
+      const a = D[k],
+        i = a.indexOf(v);
+      i >= 0 ? a.splice(i, 1) : a.push(v);
+    }
+    c.closest(".cg").outerHTML = ch(k, O[k], one);
+    const n = $(
+      '.cg[data-g="' + k + '"] .chip[data-v="' + CSS.escape(v) + '"]',
+    );
+    n && n.focus({ preventScroll: true });
+    flt();
+    as();
+  } else if ((c = t.closest("[data-sk]"))) {
+    const v = +c.dataset.v;
+    D.sk[c.dataset.sk] = v;
+    [...c.parentElement.children].forEach((b) => {
+      const n = +b.dataset.v;
+      b.classList.toggle("on", n <= v);
+      b.setAttribute("aria-checked", n == v);
+    });
+    c.parentElement.previousElementSibling.lastChild.textContent = v + "/10";
+    as();
+  } else if ((c = t.closest("[data-mv]"))) {
+    const i = +c.dataset.mv,
+      j = i + +c.dataset.d,
+      a = D.pri;
+    [a[i], a[j]] = [a[j], a[i]];
+    $("#rk").outerHTML = rkl();
+    const b = $('#rk [data-mv="' + j + '"][data-d="' + c.dataset.d + '"]');
+    b && b.focus();
+    as();
+  } else if ((c = t.closest("[data-q]"))) {
+    D.sal = +c.dataset.q;
+    $("#fsal").value = D.sal;
+    $("#fsal").classList.remove("bad");
+    $("#e_sal").hidden = true;
+    $$("[data-q]").forEach((b) => b.classList.toggle("on", b == c));
+    as();
+  }
+});
+// Runs every time the user types or moves a slider
+document.addEventListener("input", (e) => {
+  const t = e.target;
+  if (t.dataset.f) {
+    D[t.dataset.f] =
+      t.type == "number" ? (t.value === "" ? "" : +t.value) : t.value;
+    t.classList.remove("bad");
+    const r = $("#e_" + t.dataset.f);
+    if (r) r.hidden = true;
+    as();
+  }
+  if (t.dataset.r || t.dataset.n) {
+    const k = t.dataset.r || t.dataset.n,
+      r = $("#r" + k),
+      mx = +r.dataset.mx,
+      v = Math.max(0, Math.min(mx, Math.round(+t.value || 0)));
+    D[k] = v;
+    r.value = v;
+    const nb = $('[data-n="' + k + '"]');
+    if (nb && t != nb) nb.value = v;
+    $('label[for="r' + k + '"] output').textContent = ro(v, mx);
+    as();
+  }
+  if (t.id == "isr") flt();
+});
+// Pressing Enter moves to the next step
+document.addEventListener("keydown", (e) => {
+  if (
+    e.key == "Enter" &&
+    $("#nx") &&
+    !$("#test").hidden &&
+    e.target.tagName == "INPUT" &&
+    e.target.type != "range"
+  ) {
+    e.preventDefault();
+    $("#nx").click();
+  }
+});
+// Start a new assessment / resume saved one
+function start() {
+  st = 0;
+  D = DD();
+  show("test");
+  draw();
+}
+// res() ranks all careers and builds the whole results page
+function resume() {
+  show("test");
+  draw();
+  toast("Progress restored");
+}
+// ========== 10. SCORING ENGINE ==========
+// ov = how much two lists overlap (0 to 1)
+const ov = (u, b, m) =>
+  Math.min(1, b.filter((x) => u.includes(x)).length / Math.min(m, b.length));
+// score(career) gives each of the 6 factors a value from 0 to 1, then combines them using weights
+function score(c) {
+  const d = D,
+    n = (x) => +x || 0,
+    ac =
+      c.ac.reduce((t, w, i) => t + w * n([d.m, d.s, d.c, d.e][i]), 0) /
+      c.ac.reduce((t, w) => t + w, 0) /
+      100,
+    e = Object.entries(c.sk),
+    dm = { "1–2 years": 2, "3–4 years": 4, "5+ years": 9 }[d.dur];
+  const f = {
+    acad: 0.5 * ac + 0.5 * ov(d.subj, c.sub, 2),
+    int: ov(d.it, c.it, 2),
+    skill:
+      e.reduce((t, [k, w]) => t + (w * d.sk[k]) / 10, 0) /
+      e.reduce((t, [k, w]) => t + w, 0),
+    pers:
+      0.4 * ov(d.env, c.en, 1) +
+      0.4 * ov(d.ey, c.ey, 1) +
+      0.2 * (1 - Math.abs(d.rk - c.rk) / 10),
+    goal:
+      0.6 * ov(d.pri.slice(0, 3), c.gl, 2) +
+      0.2 * Math.min(1, c.sal[1] / Math.max(n(d.sal), 1)) +
+      0.2 * (!dm || c.yr <= dm ? 1 : 0.3),
+    mkt: c.dem / 100,
+  };
+  const sw = Object.values(W).reduce((a, b) => a + b, 0) || 1;
+  return {
+    c,
+    f,
+    t: Math.round(
+      (Object.keys(f).reduce((t, k) => t + W[k] * f[k], 0) / sw) * 100,
+    ),
+  };
+}
+// ========== 11. ANALYSIS SCREEN ==========
+// Shows the animated checklist, then opens the results
+function analyze() {
+  sv();
+  show("an");
+  const L = [
+      "Academic profile analyzed",
+      "Interests analyzed",
+      "Skills analyzed",
+      "Personality analyzed",
+      "Career preferences analyzed",
+      "Market trends analyzed",
+      "Career compatibility calculated",
+    ],
+    u = $("#al");
+  u.innerHTML = L.map((x) => `<li>○ ${x}</li>`).join("");
+  $("#ad").style.opacity = 0;
+  L.forEach((x, i) =>
+    setTimeout(
+      () => {
+        u.children[i].classList.add("on");
+        u.children[i].textContent = "✓ " + x;
+      },
+      500 * (i + 1),
+    ),
+  );
+  setTimeout(() => ($("#ad").style.opacity = 1), 500 * L.length + 300);
+  setTimeout(
+    () => {
+      cmp = [];
+      res();
+      show("res");
+    },
+    500 * L.length + 1400,
+  );
+}
+// ========== 12. RESULTS ==========
+// Helper text and chart helpers
+const lab = (t) =>
+  t >= 75 ? "a strong" : t >= 55 ? "a reasonable" : "a partial";
+// why() writes the short explanation for each career
+function why(r) {
+  const c = r.c,
+    i = c.it.filter((x) => D.it.includes(x)),
+    s = Object.keys(c.sk)
+      .sort((a, b) => D.sk[b] * c.sk[b] - D.sk[a] * c.sk[a])
+      .slice(0, 2);
+  return `This career appears to be ${lab(r.t)} match based on the information you provided: ${i.length ? "your interest in " + i.join(", ").toLowerCase() : "your overall academic profile"}, your self-rated ${s.join(" and ").toLowerCase()}${ov(D.env, c.en, 1) || ov(D.ey, c.ey, 1) ? ", and your preferred way of working" : ""}.`;
+}
+const sal = (c) => `₹${c.sal[0]}–${c.sal[1]} LPA`,
+  SRC =
+    "India · INR lakh per year (LPA) · typical early-to-senior range · ILLUSTRATIVE ESTIMATE, not a measured statistic · 2026 · no live data source connected";
+// bars() draws horizontal bar charts
+const bars = (rows) =>
+  rows
+    .map(
+      (r) =>
+        `<div class="br" data-tip="${r.tip}"><span>${r.n}</span><i><b style="--w:${r.v}%"></b></i><em>${r.l}</em></div>`,
+    )
+    .join("");
+// Animated number counter
+function cnt(el, to) {
+  let s = null;
+  const f = (t) => {
+    s = s || t;
+    const p = Math.min(1, (t - s) / 1400);
+    el.textContent = Math.round(to * p);
+    if (p < 1) requestAnimationFrame(f);
+  };
+  requestAnimationFrame(f);
+}
+// res() ranks all careers and builds the whole results page
+function res() {
+  R = C.map(score).sort((a, b) => b.t - a.t);
+  const T = R.slice(0, 5),
+    top = R[0],
+    ma = Math.max(...R.map((r) => r.c.sal[1])),
+    SH = R.slice(0, 6);
+  const card = (r, i) =>
+    `<div class="cd h"><div class="row"><span style="font-size:2rem">${r.c.i}</span><div><b>${String(i + 1).padStart(2, "0")} — ${r.c.n}</b><div class="m">${r.t}%</div></div></div><p class="mu">${r.c.d} ${why(r)}</p><div class="row"><span class="pill">${sal(r.c)} (est.)</span><span class="pill">Demand ${r.c.dem}/100</span><span class="pill">Growth ${r.c.gr}/100</span></div><p class="mu" style="font-size:.85rem">Key skills: ${Object.keys(r.c.sk).slice(0, 4).join(", ")}</p><div class="row"><button class="btn p" onclick="detail('${r.c.n}')">View details</button><button class="btn" onclick="tg('${r.c.n}')">+ Compare</button></div></div>`;
+  const medal = ["🥇", "🥈", "🥉", "4.", "5."],
+    pay = [...SH].sort((a, b) => b.c.sal[1] - a.c.sal[1]).slice(0, 5),
+    dm = [...SH].sort((a, b) => b.c.dem - a.c.dem).slice(0, 5);
+  $("#res").innerHTML =
+    `<div id="top"></div><div class="top"><div class="ring"><svg width="190" height="190" viewBox="0 0 190 190"><defs><linearGradient id="gg"><stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#a06bff"/></linearGradient></defs><circle class="t" cx="95" cy="95" r="70"/><circle class="v" cx="95" cy="95" r="70" style="stroke-dashoffset:440" id="rv"/></svg><b><span id="rc">0</span>%</b></div><div><h1 style="font-size:2.4rem">Your Career Profile${D.name ? ", " + es(D.name) : ""}</h1><p class="mu">Career Match Score: <b>${top.t}%</b> with ${top.c.n}. Scores reflect your answers and the weights below.</p><div class="row"><button class="btn" onclick="start()">Retake assessment</button><button class="btn" onclick="delA()">Delete assessment</button></div></div></div>
+<p class="note" style="margin:18px 0">Salary, demand and growth figures are <b>illustrative estimates</b> (${SRC.split(" · ").slice(0, 3).join(" · ")}, 2026). No live labour-market API is connected, so verify with current sources such as government labour statistics or official job portals.</p>
+<h2>Your Top Career Matches</h2><div class="gr">${T.map(card).join("")}</div>
+<h2 id="charts" style="margin-top:40px">Career comparison charts</h2><div class="gr"><div class="cd"><h3>Salary potential</h3>${bars(SH.map((r) => ({ n: r.c.n, v: ((r.c.sal[0] + r.c.sal[1]) / 2 / ma) * 100, l: sal(r.c), tip: r.c.n + ": " + sal(r.c) + ". " + SRC })))}</div><div class="cd"><h3>Job demand</h3>${bars(SH.map((r) => ({ n: r.c.n, v: r.c.dem, l: r.c.dem + "/100", tip: r.c.n + " demand index " + r.c.dem + "/100. Illustrative estimate, 2026, no live source." })))}<h3 style="margin-top:20px">Growth outlook</h3>${bars(SH.map((r) => ({ n: r.c.n, v: r.c.gr, l: r.c.gr + "/100", tip: r.c.n + " growth index " + r.c.gr + "/100. Illustrative estimate, 2026." })))}</div><div class="cd"><h3>Your compatibility</h3>${bars(
+      R.map((r) => ({
+        n: r.c.n,
+        v: r.t,
+        l: r.t + "%",
+        tip:
+          r.c.n +
+          ": " +
+          Object.keys(WL)
+            .map((k) => WL[k] + " " + Math.round(r.f[k] * 100))
+            .join(", "),
+      })),
+    )}</div></div>
+<h2 id="paying" style="margin-top:40px">💰 Highest Paying Careers For You</h2><div class="gr">${pay.map((r, i) => `<div class="cd h"><h3>${medal[i]} ${r.c.n}</h3><b>${sal(r.c)}</b> <span class="mu">(estimate)</span><p class="mu" style="font-size:.88rem">Experience: entry level to senior<br>Source: illustrative estimate, India, INR, 2026<br>Education: ${r.c.ed}<br>Key skills: ${Object.keys(r.c.sk).slice(0, 4).join(", ")}</p></div>`).join("")}</div><p class="mu" style="font-size:.85rem">Pay varies by country, experience, company, location and specialization.</p>
+<h2 id="demand" style="margin-top:40px">🔥 Most In-Demand Careers</h2><div class="cd">${bars(dm.map((r) => ({ n: r.c.n, v: r.c.dem, l: r.c.dem + "/100", tip: "Demand score " + r.c.dem + "/100. Illustrative estimate, India, 2026, no live source." })))}</div>
+<h2 id="why" style="margin-top:40px">🤖 Why CareerAI Recommended These Careers</h2><div class="cd"><p>${R.slice(
+      0,
+      3,
+    )
+      .map((r) => r.c.n)
+      .join(
+        ", ",
+      )} rank highest for you. ${why(R[0])} ${R[1] ? why(R[1]) : ""} These are guidance signals, not predictions or instructions.</p><p class="mu" style="font-size:.88rem">The ranking comes from the scoring engine below. Any AI-written text only explains the result; it never picks the careers. This version writes explanations from templates.</p></div>
+<h2 style="margin-top:40px">Scoring engine</h2><div class="cd"><p class="mu">Career score = weighted sum of six factors, normalised to 0–100. Adjust the weights and the ranking updates.</p><div class="gr">${Object.keys(
+      W,
+    )
+      .map(
+        (k) =>
+          `<div><label for="w${k}" class="sl"><span>${WL[k]}</span><output>${W[k]}</output></label><input id="w${k}" type="range" min="0" max="50" value="${W[k]}" data-w="${k}"></div>`,
+      )
+      .join(
+        "",
+      )}</div><button class="btn" onclick="W={...DW};res();toast('Weights reset')">Reset weights</button></div>
+<h2 id="cmp" style="margin-top:40px">Compare careers</h2><div class="cd"><p class="mu">Select up to 4 careers.</p><div class="chips" id="cc"></div><div class="tb" id="ct"></div></div>`;
+  $("#rc").textContent = 0;
+  setTimeout(() => {
+    $("#rv").style.strokeDashoffset = 440 * (1 - top.t / 100);
+    cnt($("#rc"), top.t);
+  }, 100);
+  $$("[data-w]").forEach(
+    (i) =>
+      (i.onchange = () => {
+        W[i.dataset.w] = +i.value;
+        const y = scrollY;
+        res();
+        scrollTo(0, y);
+      }),
+  );
+  $$("[data-w]").forEach(
+    (i) =>
+      (i.oninput = () =>
+        (i.previousElementSibling.lastChild.textContent = i.value)),
+  );
+  if (!cmp.length) cmp = R.slice(0, 3).map((r) => r.c.n);
+  cc();
+}
+// ========== 13. COMPARE & DETAILS ==========
+// tg() adds/removes a career from the comparison table
+function tg(n) {
+  const i = cmp.indexOf(n);
+  if (i >= 0) cmp.splice(i, 1);
+  else if (cmp.length < 4) cmp.push(n);
+  else return toast("Compare up to 4 careers");
+  if (i < 0) toast(n + " added to comparison");
+  cc();
+}
+// cc() draws the comparison chips and table
+function cc() {
+  $("#cc").innerHTML = R.map(
+    (r) =>
+      `<button class="chip${cmp.includes(r.c.n) ? " on" : ""}" onclick="tg('${r.c.n}')">${r.c.n}</button>`,
+  ).join("");
+  const S = R.filter((r) => cmp.includes(r.c.n)),
+    F = [
+      ["Your match", (r) => r.t + "%"],
+      ["Salary (est.)", (r) => sal(r.c)],
+      ["Demand", (r) => r.c.dem + "/100"],
+      ["Growth", (r) => r.c.gr + "/100"],
+      ["Difficulty", (r) => r.c.df + "/10"],
+      ["Education", (r) => r.c.ed],
+      ["Work-life balance", (r) => r.c.wb + "/10"],
+      ["Remote potential", (r) => r.c.rm + "/10"],
+    ];
+  $("#ct").innerHTML = S.length
+    ? `<table><tr><th>Factor</th>${S.map((r) => `<th>${r.c.i} ${r.c.n}</th>`).join("")}</tr>${F.map((f) => `<tr><th>${f[0]}</th>${S.map((r) => `<td>${f[1](r)}</td>`).join("")}</tr>`).join("")}</table>`
+    : '<p class="mu">Pick a career above to start comparing.</p>';
+}
+// detail() builds the page for one career (skills, roadmap, projects)
+function detail(n) {
+  const r = R.find((x) => x.c.n == n),
+    c = r.c,
+    ph = c.rp.split("|"),
+    sw = Object.values(W).reduce((a, b) => a + b, 0) || 1;
+  $("#det").innerHTML =
+    `<button class="btn" onclick="show('res')">← Back to results</button><h1>${c.i} ${c.n}</h1><div class="cd"><span class="m">Your match: ${r.t}%</span><h3>Why this career matches you</h3><p>${why(r)}</p><p class="mu" style="font-size:.88rem">${c.d}</p></div>
+<div class="gr" style="margin-top:16px"><div class="cd"><h3>Score breakdown</h3>${bars(Object.keys(WL).map((k) => ({ n: WL[k], v: Math.round(r.f[k] * 100), l: Math.round(r.f[k] * 100) + "% (w " + Math.round((W[k] / sw) * 100) + "%)", tip: WL[k] + ": " + Math.round(r.f[k] * 100) + "/100, weight " + Math.round((W[k] / sw) * 100) + "%" })))}</div><div class="cd"><h3>Required skills</h3>${bars(Object.entries(c.sk).map(([k, w]) => ({ n: k, v: w, l: w + "% · you " + D.sk[k] + "/10", tip: k + " importance " + w + "%; your rating " + D.sk[k] + "/10" })))}</div></div>
+<h2 style="margin-top:30px">Education path</h2><div class="path">${["Class 12", c.ed, ph[0], ph[2], "Projects", "Internship", c.n].map((x, i) => (i ? '<span style="border:0;background:none">↓</span>' : "") + `<span>${x}</span>`).join("")}</div>
+<h2 style="margin-top:30px">🚀 Your Career Roadmap</h2><div class="cd">${ph.map((p, i) => `<div class="ph"><b>Phase ${i + 1}</b><br>${p}</div>`).join("")}</div>
+<div class="gr" style="margin-top:16px"><div class="cd"><h3>Suggested projects</h3><p class="mu">${c.pj}</p></div><div class="cd"><h3>Certifications</h3><p class="mu">Look for current, recognised certificates in this field from major providers or universities and check their relevance first.</p></div><div class="cd"><h3>Portfolio</h3><p class="mu">Publish 3 documented projects with outcomes, a short write-up each, and a clean profile page.</p></div><div class="cd"><h3>Internships and interviews</h3><p class="mu">Apply from your second year, practise fundamentals out loud, and prepare two project stories you can explain in depth.</p></div></div>
+<div class="row" style="margin-top:20px"><button class="btn p" onclick="tg('${c.n}');show('res');document.getElementById('cmp').scrollIntoView()">Add to comparison</button></div>`;
+  show("det");
+}
+// ========== 14. PRIVACY & DATA ==========
+// Privacy policy and export dialog
+function dlg(t) {
+  const d = $("#dg");
+  d.innerHTML =
+    t == "priv"
+      ? `<h3>Privacy policy</h3><p>Your answers are used only to generate your career recommendations.</p><p class="mu">Everything stays in this browser (local storage). Nothing is sent to a server, and no account is needed. Use Delete assessment or Clear saved data any time.</p><button class="btn" onclick="$('#dg').close()">Close</button>`
+      : `<h3>Export my data</h3><textarea readonly id="ex">${JSON.stringify(D, null, 1).replace(/</g, "&lt;")}</textarea><div class="row"><button class="btn p" onclick="try{navigator.clipboard.writeText($('#ex').value);toast('Copied')}catch(e){$('#ex').select()}">Copy</button><button class="btn" onclick="$('#dg').close()">Close</button></div>`;
+  d.showModal();
+}
+// Delete answers / clear everything saved in the browser
+function delA() {
+  D = DD();
+  st = 0;
+  cmp = [];
+  sv();
+  toast("Assessment deleted");
+  show("home");
+}
+function clr() {
+  try {
+    localStorage.removeItem("careerai");
+  } catch (e) {}
+  D = DD();
+  st = 0;
+  $("#rs").hidden = true;
+  toast("Saved data cleared");
+  show("home");
+}
+
+</script>
+  </body>
+</html>
